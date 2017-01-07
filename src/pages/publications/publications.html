@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="vender">
+        Vender
+      </ion-segment-button>
+      <ion-segment-button value="publicaciones_ventas">
+        Publicaciones en Venta
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
