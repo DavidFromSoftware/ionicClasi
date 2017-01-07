@@ -2,9 +2,20 @@ import {Component} from '@angular/core'
 
 @Component({
   selector: 'header-publications',
-  template: `
-    <h2>Angular2 Root Component</h2>
-    <div data-dynamic-content></div>
+  template: `  
+	  <ion-toolbar no-border-top>
+	    <ion-segment [(ngModel)]="publicationOptions">
+	      <ion-segment-button value="selling">
+	        Vender
+	      </ion-segment-button>
+	      <ion-segment-button value="publicaciones_ventas">
+	        Publicaciones en Venta
+	      </ion-segment-button>
+	    </ion-segment>
+	  </ion-toolbar>
   `,
 })
-export class HeaderPublications {}
+export class HeaderPublications {
+
+	publicationOptions: string = "selling";
+}

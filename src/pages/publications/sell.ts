@@ -3,9 +3,10 @@ import { NavController } from 'ionic-angular';
 import { HeaderPublications} from 'header'
 
 @Component({
-	templateUrl: 'publications.html'
+	templateUrl: 'sell.html'
 })
-export class PublicationsPage {	
+export class Sellpage {
+	
 	publicationOptions: string = "selling";
 	constructor(public navCtrl: NavController){
 
