@@ -3,10 +3,13 @@ import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { TabsPage } from '../pages/tabs/tabs';
+import { PublicationService } from '../pages/publications/service'
+import { HttpModule } from '@angular/http';
 
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [HttpModule]
 })
 export class MyApp {
   rootPage = TabsPage;

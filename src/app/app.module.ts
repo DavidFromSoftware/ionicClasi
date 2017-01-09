@@ -1,13 +1,13 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { PublicationsPage } from '../pages/publications/publications';
-import { Sellpage } from '../pages/publications/sell';
-import { HeaderPublications } from '../pages/publications/header';
 import { TabsPage } from '../pages/tabs/tabs';
+import { PublicationService } from '../pages/publications/service'
 
 @NgModule({
   declarations: [
@@ -16,9 +16,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     ContactPage,
     HomePage,
     PublicationsPage,
-    HeaderPublications,
-    TabsPage,
-    Sellpage
+    TabsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -30,10 +28,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     ContactPage,
     HomePage,
     PublicationsPage,
-    HeaderPublications,
-    TabsPage,
-    Sellpage
+    TabsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [ HttpModule, PublicationService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
