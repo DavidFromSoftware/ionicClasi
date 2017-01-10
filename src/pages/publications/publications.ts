@@ -7,9 +7,11 @@ import { PublicationService } from './service';
 })
 export class PublicationsPage {	
 	publicationOptions: string = "selling";
+	publications= [];
 	constructor(public navCtrl: NavController, private publicationService: PublicationService ){}
 	ngOnInit(){
-		console.log(this.publicationService.getPublications())
+		this.publicationService.getPublications().subscribe( publications => { this.publications.push(publications)  })
+		console.log(this.publications)
 	}
 
 

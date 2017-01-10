@@ -10,7 +10,7 @@ export class PublicationService{
    }
 
    getPublications(){
-       return this.http.get(this.endpoint_url).map(res => res.json());
+       return this.http.get(this.endpoint_url).map(response => response.json().responseData);
    }
 
 
