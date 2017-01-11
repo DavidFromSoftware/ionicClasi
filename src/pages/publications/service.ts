@@ -4,6 +4,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class PublicationService{
+	access_token:string = "6e7764964e6cab6eaa8bf3a984e5b888"
 	endpoint_url:string = "http://api.lvh.me:3000/v1/lugares/categoria/19?access_token=6e7764964e6cab6eaa8bf3a984e5b888";
 	constructor(private http: Http){
        this.http = http;
