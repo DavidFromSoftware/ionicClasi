@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { PublicationsPage } from '../pages/publications/publications';
 import { TabsPage } from '../pages/tabs/tabs';
 import { PublicationService } from '../pages/publications/service'
+import { LoginPage } from '../pages/profile/login';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PublicationService } from '../pages/publications/service'
     ContactPage,
     HomePage,
     PublicationsPage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -28,7 +30,8 @@ import { PublicationService } from '../pages/publications/service'
     ContactPage,
     HomePage,
     PublicationsPage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   providers: [ HttpModule, PublicationService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

@@ -28,9 +28,23 @@
         <button ion-button color="primary" block>Publicar</button>
       </div>
       <ion-list style="padding-top: 30px;">
-        <ion-list-header>
+        <ion-list-header style="font-size: 20px;">
           Mis publicaciones en venta
         </ion-list-header>
+        <ion-item *ngFor="let publication of this.publications[0]">
+          <ion-thumbnail item-left>
+            <img src="{{ 'http://guiachivilcoy.com'+publication.data.images[0].photo }}">
+          </ion-thumbnail>
+          <h2> {{  publication.data.name }}</h2>
+          <p>$ 198.000</p>
+          <p>
+            <button ion-button color="danger" icon-left>
+              <ion-icon name='close'></ion-icon>
+                Marcar como vendido
+            </button>
+          </p>
+          <button ion-button clear item-right><ion-icon name="arrow-forward"></ion-icon></button>
+        </ion-item>
       </ion-list>
     </div>
     
@@ -44,7 +58,7 @@
           </ion-thumbnail>
           <h2> {{  publication.data.name }}</h2>
           <p>Hayao Miyazaki • 1988</p>
-          <button ion-button clear item-right>View</button>
+          <button ion-button clear item-right>Más</button>
         </ion-item>
       </ion-list>
     </div>
