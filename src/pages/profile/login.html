@@ -1,1 +1,31 @@
-<h1>Login</h1>
+<ion-header>
+  <ion-navbar>
+    <ion-title>Iniciar Sesión</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+
+	  <ion-item>
+	    <ion-label floating>Correo</ion-label>
+	    <ion-input [(ngModel)]="username" type="text" value=""></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label floating>Contraseña</ion-label>
+	    <ion-input [(ngModel)]="password"  type="password" value=""></ion-input>
+	  </ion-item>
+
+	</ion-list>
+
+	<div padding>
+		<button ion-button icon-left (click)="login()">
+	    	Iniciar Sesión
+		</button>
+		<button ion-button icon-right>
+	    	Registrarse
+		</button>
+	</div>
+</ion-content>
