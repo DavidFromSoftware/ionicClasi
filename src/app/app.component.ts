@@ -5,7 +5,6 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { TabsPage } from '../pages/tabs/tabs';
 import { HttpModule } from '@angular/http';
 
-
 @Component({
   templateUrl: 'app.html',
   providers: [HttpModule]
@@ -21,4 +20,7 @@ export class MyApp {
       Splashscreen.hide();
     });
   }
+
+
+
 }

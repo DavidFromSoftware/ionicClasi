@@ -11,7 +11,6 @@ export class PublicationsPage {
 	constructor(public navCtrl: NavController, private publicationService: PublicationService ){}
 	ngOnInit(){
 		this.publicationService.getPublications().subscribe( publications => { this.publications.push(publications)  })
-		console.log(this.publications)
 	}
 
 

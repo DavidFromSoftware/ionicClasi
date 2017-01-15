@@ -36,4 +36,7 @@ import { LoginPage } from '../pages/profile/login';
   ],
   providers: [ HttpModule, SessionService, PublicationService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
-export class AppModule {}
+export class AppModule {
+
+  constructor(){}
+}

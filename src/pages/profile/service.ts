@@ -11,9 +11,8 @@ export class SessionService{
    }
 
    newSesion(params){
-   		params = JSON.stringify(params)
    		let headers = new Headers({ 'Content-Type': 'application/json' });
-    	return this.http.post(this.endpoint_url, params, headers).map(response => response.json().responseData);
+    	return this.http.post(this.endpoint_url, params, headers).map(response => response.json());
    }
 
 
