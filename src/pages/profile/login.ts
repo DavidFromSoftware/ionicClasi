@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { SessionService } from './service';
+import { SessionService, User } from './service';
 
 import { NavController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+import { PublicationsPage } from '../publications/publications'
 
 @Component({
   selector: 'login',
@@ -22,7 +23,8 @@ export class LoginPage {
 			var params = { "email": this.username, "password": this.password }
 			this.sessionService.newSesion(params).subscribe( response => {
 				if(response.status == "Successful"){
-					localStorage['current_user'] = JSON.stringify(response.data)
+					this.sessionService.setUserInfo(response.data.email, response.data.fullname)
+        			this.navCtrl.setRoot(PublicationsPage)
 				}else{
 					let toast = this.toastCtrl.create({
 				      message: response.response,

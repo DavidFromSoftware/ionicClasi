@@ -13,15 +13,16 @@
 <ion-content>
   <div [ngSwitch]="publicationOptions">
     <div *ngSwitchCase="'selling'">
+      <h3>{{ username }}</h3>
       <ion-list>
         <ion-item>
           <ion-input type="text" placeholder="Nombre"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="password" placeholder="Agregar un precio"></ion-input>
+          <ion-input type="text" placeholder="Agregar un precio"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="password" placeholder="Describe el articulo"></ion-input>
+          <ion-input type="text" placeholder="Describe el articulo"></ion-input>
         </ion-item>
       </ion-list>
       <div padding>
