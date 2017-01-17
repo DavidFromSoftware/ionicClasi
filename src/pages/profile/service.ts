@@ -21,18 +21,18 @@ export class SessionService{
        this.http = http;
    }
 
-   	newSesion(params){
-   		let headers = new Headers({ 'Content-Type': 'application/json' });
-    	return this.http.post(this.endpoint_url, params, headers).map(response => response.json());
-   	}
+  newSesion(params){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+      return this.http.post(this.endpoint_url, params, headers).map(response => response.json());
+   }
 
 	public getUserInfo(): User {
-    	return this.currentUser;
-  	} 
+    return this.currentUser;
+  } 
 
-  	public setUserInfo(email, fullname) {
-   		this.currentUser = new User(email, fullname);
-  	}
+  public setUserInfo(email, fullname) {
+   	this.currentUser = new User(email, fullname);
+  }
 
 
 }

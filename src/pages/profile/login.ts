@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SessionService, User } from './service';
 
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController, LoadingController, Loading } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { PublicationsPage } from '../publications/publications'
 
@@ -13,19 +13,25 @@ export class LoginPage {
 
 	username:string;
 	password:string;
+  	loading: Loading;
 
-	constructor(public navCtrl: NavController, private sessionService: SessionService, public toastCtrl: ToastController) {
-  	
-	}
+	constructor(public navCtrl: NavController, 
+				private sessionService: SessionService, 
+				public toastCtrl: ToastController, 
+				public viewCtrl: ViewController,
+				private loadingCtrl: LoadingController) {}
 
 	public login(){
-		if (this.username != null && this.password != null){
+		if (typeof this.username != "undefined" && typeof this.password != "undefined"){
+			this.showLoading()
 			var params = { "email": this.username, "password": this.password }
 			this.sessionService.newSesion(params).subscribe( response => {
 				if(response.status == "Successful"){
 					this.sessionService.setUserInfo(response.data.email, response.data.fullname)
-        			this.navCtrl.setRoot(PublicationsPage)
+					this.loading.dismiss()
+        			this.navCtrl.parent.select(0);
 				}else{
+					this.loading.dismiss()
 					let toast = this.toastCtrl.create({
 				      message: response.response,
 				      duration: 2000,
@@ -35,8 +41,20 @@ export class LoginPage {
 				}
 			})
 		}else{
-			
+			let toast = this.toastCtrl.create({
+				message: "Complete todos los campos",
+				duration: 2000,
+				position: 'top'
+			});
+    		toast.present(toast);
 		}
+	}
+
+	showLoading() {
+		this.loading = this.loadingCtrl.create({
+	      content: 'Por favor espere...'
+	    });
+	    this.loading.present();
 	}
 
 }

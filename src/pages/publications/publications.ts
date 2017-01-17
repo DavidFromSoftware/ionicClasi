@@ -12,16 +12,24 @@ export class PublicationsPage {
 
 	username: string = '';
 	email: string = '';
+	currentUser= this.sessionService.getUserInfo()
 	constructor(public navCtrl: NavController, private publicationService: PublicationService, private sessionService: SessionService ){
 
 	}
 	ngOnInit(){
 		this.publicationService.getPublications().subscribe( publications => { this.publications.push(publications)  })
-		let currentUser= this.sessionService.getUserInfo()
-
-	    typeof currentUser != "undefined" ? this.username = currentUser.name : this.username = ""
-	    typeof currentUser != "undefined" ? this.email = currentUser.email : this.email = ""
 	}
+
+	ionViewDidLoad() {}
+
+	ionViewWillEnter() {
+		if( typeof this.sessionService.getUserInfo() != "undefined" ) {
+			this.username = this.sessionService.getUserInfo().name
+			this.email = this.sessionService.getUserInfo().email
+		}
+	}
+	
+	ionViewWillLeave() {}
 
 
 }
