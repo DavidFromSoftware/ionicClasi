@@ -15,11 +15,22 @@ export class LoginPage {
 	password:string;
   	loading: Loading;
 
+	currentUser= new User("", "");
+
 	constructor(public navCtrl: NavController, 
 				private sessionService: SessionService, 
 				public toastCtrl: ToastController, 
 				public viewCtrl: ViewController,
 				private loadingCtrl: LoadingController) {}
+
+	ngOnInit(){}
+
+	ionViewWillEnter() {
+		if( typeof this.sessionService.getUserInfo() != "undefined" ) {
+			this.currentUser.email = this.sessionService.getUserInfo().name
+			this.currentUser.name = this.sessionService.getUserInfo().email
+		}
+	}
 
 	public login(){
 		if (typeof this.username != "undefined" && typeof this.password != "undefined"){

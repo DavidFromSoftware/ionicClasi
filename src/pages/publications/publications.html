@@ -12,42 +12,79 @@
 </ion-header>
 <ion-content>
   <div [ngSwitch]="publicationOptions">
+
     <div *ngSwitchCase="'selling'">
-      <h3>{{ username }}</h3>
-      <ion-list>
-        <ion-item>
-          <ion-input type="text" placeholder="Nombre"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type="text" placeholder="Agregar un precio"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type="text" placeholder="Describe el articulo"></ion-input>
-        </ion-item>
-      </ion-list>
-      <div padding>
-        <button ion-button color="primary" block>Publicar</button>
+
+
+      <div *ngIf="email != ''">
+        <ion-list>
+          <ion-item>
+            <ion-input type="text" placeholder="Nombre"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Agregar un precio"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="Describe el articulo"></ion-input>
+          </ion-item>
+        </ion-list>
+        
+        <div padding>
+          <button ion-button color="primary" block>Publicar</button>
+        </div>
+        <ion-list style="padding-top: 30px;">
+          <ion-list-header style="font-size: 20px;">
+            Mis publicaciones en venta
+          </ion-list-header>
+          <ion-item *ngFor="let publication of this.publications[0]">
+            <ion-thumbnail item-left>
+              <img src="{{ 'http://guiachivilcoy.com'+publication.data.images[0].photo }}">
+            </ion-thumbnail>
+            <h2> {{  publication.data.name }}</h2>
+            <p>$ 198.000</p>
+            <p>
+              <button ion-button color="danger" icon-left>
+                <ion-icon name='close'></ion-icon>
+                  Marcar como vendido
+              </button>
+            </p>
+            <button ion-button clear item-right><ion-icon name="arrow-forward"></ion-icon></button>
+          </ion-item>
+        </ion-list>
       </div>
-      <ion-list style="padding-top: 30px;">
-        <ion-list-header style="font-size: 20px;">
-          Mis publicaciones en venta
-        </ion-list-header>
-        <ion-item *ngFor="let publication of this.publications[0]">
-          <ion-thumbnail item-left>
-            <img src="{{ 'http://guiachivilcoy.com'+publication.data.images[0].photo }}">
-          </ion-thumbnail>
-          <h2> {{  publication.data.name }}</h2>
-          <p>$ 198.000</p>
-          <p>
-            <button ion-button color="danger" icon-left>
-              <ion-icon name='close'></ion-icon>
-                Marcar como vendido
-            </button>
-          </p>
-          <button ion-button clear item-right><ion-icon name="arrow-forward"></ion-icon></button>
-        </ion-item>
-      </ion-list>
+
+      <div *ngIf="email == ''">
+
+          <ion-card>
+
+            <img src="assets/img/comeLogin.png"/>
+
+            <ion-card-content>
+              <ion-card-title>
+                Bienvenido a Chivilcoy Clasificados!
+              </ion-card-title>
+              <p>
+                Para comenzar a vender tus productos tenés que ingresar con tu cuenta chivilcoy:
+              </p>
+            </ion-card-content>
+
+            <ion-row>
+              <ion-col>
+                <button ion-button icon-left style="margin-left: 3%;" (click)="goLogin()">
+                  <ion-icon name='person'></ion-icon>
+                  Ingresar
+                </button>
+              </ion-col>
+            </ion-row>
+
+          </ion-card>
+      </div>
+
+
+
     </div>
+
+    
     
 
     <div *ngSwitchCase="'publicaciones_ventas'">
@@ -58,7 +95,7 @@
             <img src="{{ 'http://guiachivilcoy.com'+publication.data.images[0].photo }}">
           </ion-thumbnail>
           <h2> {{  publication.data.name }}</h2>
-          <p>Hayao Miyazaki • 1988</p>
+          <p></p>
           <button ion-button clear item-right>Más</button>
         </ion-item>
       </ion-list>

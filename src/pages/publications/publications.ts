@@ -31,5 +31,9 @@ export class PublicationsPage {
 	
 	ionViewWillLeave() {}
 
+	goLogin(){
+		this.navCtrl.parent.select(2);
+	}
+
 
 }
