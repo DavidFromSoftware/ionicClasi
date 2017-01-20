@@ -26,6 +26,35 @@
 		</div>
 	</div>
 	<div *ngIf="currentUser.email != ''" >
+
+	  	<ion-list>
+		    <ion-item>
+		    	<ion-avatar item-left>
+		        	<img [src]="currentUser.avatar">
+		        </ion-avatar>
+		        <h2>{{currentUser.email}}</h2>
+		        <p>{{currentUser.name}}</p>
+		    </ion-item>
+
+	    	<ion-item>
+	        	Clasificados
+	      	</ion-item>
+
+	    	<ion-item>
+	        Cantidad
+	        	<ion-note item-right>
+	          		0
+	        	</ion-note>
+	      	</ion-item>
+
+	    	<ion-item>
+	        Vendidos
+	        	<ion-note item-right>
+	          		0
+	        	</ion-note>
+	      	</ion-item>
+
+		</ion-list>
 	</div>
 </ion-content>	
 

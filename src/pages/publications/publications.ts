@@ -1,13 +1,29 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PublicationService } from './service';
 import { SessionService, User } from '../profile/service';
+
+@Component({
+	templateUrl: 'publication_details.html'
+})
+export class PublicationDetails {
+	publication
+
+	constructor(params: NavParams){
+		this.publication = params.data.publication
+	}
+	ngOnInit(){
+		console.log(this.publication)
+	}
+}
+
+
 
 @Component({
 	templateUrl: 'publications.html'
 })
 export class PublicationsPage {	
-	publicationOptions: string = "selling";
+	publicationOptions: string = "publicaciones_ventas";
 	publications= [];
 
 	username: string = '';
@@ -33,6 +49,10 @@ export class PublicationsPage {
 
 	goLogin(){
 		this.navCtrl.parent.select(2);
+	}
+
+	openPublicationDetailPage(publication) {
+		this.navCtrl.push(PublicationDetails, { publication: publication})
 	}
 
 

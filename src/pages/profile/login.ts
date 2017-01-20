@@ -15,7 +15,7 @@ export class LoginPage {
 	password:string;
   	loading: Loading;
 
-	currentUser= new User("", "");
+	currentUser= new User("", "", "");
 
 	constructor(public navCtrl: NavController, 
 				private sessionService: SessionService, 
@@ -29,6 +29,7 @@ export class LoginPage {
 		if( typeof this.sessionService.getUserInfo() != "undefined" ) {
 			this.currentUser.email = this.sessionService.getUserInfo().name
 			this.currentUser.name = this.sessionService.getUserInfo().email
+			this.currentUser.avatar = this.sessionService.getUserInfo().avatar
 		}
 	}
 
@@ -38,7 +39,7 @@ export class LoginPage {
 			var params = { "email": this.username, "password": this.password }
 			this.sessionService.newSesion(params).subscribe( response => {
 				if(response.status == "Successful"){
-					this.sessionService.setUserInfo(response.data.email, response.data.fullname)
+					this.sessionService.setUserInfo(response.data)
 					this.loading.dismiss()
         			this.navCtrl.parent.select(0);
 				}else{

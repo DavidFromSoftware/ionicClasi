@@ -5,7 +5,7 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { PublicationsPage } from '../pages/publications/publications';
+import { PublicationsPage, PublicationDetails } from '../pages/publications/publications';
 import { TabsPage } from '../pages/tabs/tabs';
 import { PublicationService } from '../pages/publications/service';
 import { SessionService } from '../pages/profile/service';
@@ -18,6 +18,7 @@ import { LoginPage } from '../pages/profile/login';
     ContactPage,
     HomePage,
     PublicationsPage,
+    PublicationDetails,
     TabsPage,
     LoginPage
   ],
@@ -31,6 +32,7 @@ import { LoginPage } from '../pages/profile/login';
     ContactPage,
     HomePage,
     PublicationsPage,
+    PublicationDetails,
     TabsPage,
     LoginPage
   ],

@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar no-border-top>
       <ion-segment [(ngModel)]="publicationOptions">
-        <ion-segment-button value="selling">
-          Vender
-        </ion-segment-button>
         <ion-segment-button value="publicaciones_ventas">
           Publicaciones en Venta
+        </ion-segment-button>
+        <ion-segment-button value="selling">
+          Vender
         </ion-segment-button>
       </ion-segment>
     </ion-toolbar>
@@ -41,7 +41,7 @@
               <img src="{{ 'http://guiachivilcoy.com'+publication.data.images[0].photo }}">
             </ion-thumbnail>
             <h2> {{  publication.data.name }}</h2>
-            <p>$ 198.000</p>
+            <p>$ 198.00</p>
             <p>
               <button ion-button color="danger" icon-left>
                 <ion-icon name='close'></ion-icon>
@@ -96,7 +96,7 @@
           </ion-thumbnail>
           <h2> {{  publication.data.name }}</h2>
           <p></p>
-          <button ion-button clear item-right>Más</button>
+          <button ion-button clear item-right (click)="openPublicationDetailPage(publication)" >Más</button>
         </ion-item>
       </ion-list>
     </div>
