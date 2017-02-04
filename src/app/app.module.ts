@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
+import { FavoritesPage } from '../pages/favorites/favorites';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { PublicationsPage, PublicationDetails } from '../pages/publications/publications';
@@ -14,7 +14,7 @@ import { LoginPage } from '../pages/profile/login';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    FavoritesPage,
     ContactPage,
     HomePage,
     PublicationsPage,
@@ -28,7 +28,7 @@ import { LoginPage } from '../pages/profile/login';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    FavoritesPage,
     ContactPage,
     HomePage,
     PublicationsPage,
