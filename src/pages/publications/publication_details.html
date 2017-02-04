@@ -1,7 +1,53 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Detalle
-    </ion-title>
+    <ion-title>Detalle</ion-title>
   </ion-navbar>
 </ion-header>
+
+<ion-content class="cards-bg social-cards">
+
+<ion-card>
+
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="{{ 'http://lvh.me:3000'+publication.data.images[0].photo }}">
+    </ion-avatar>
+    <h2>Marty McFly</h2>
+    <p>November 5, 1955</p>
+  </ion-item>
+
+  <img src="{{ 'http://lvh.me:3000'+publication.data.images[0].photo }}">
+
+  <ion-card-content>
+    <p>{{ publication.data.descripcion }}</p>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button color="primary" clear small icon-left>
+        <ion-icon name='thumbs-up'></ion-icon>
+        {{ publication.data.rate }} Likes
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button color="primary" clear small icon-left>
+        <ion-icon name='text'></ion-icon>
+        {{ publication.data.num_comments }} Comments
+      </button>
+    </ion-col>
+    <ion-col center text-center>
+      <ion-note>
+        11h ago
+      </ion-note>
+    </ion-col>
+  </ion-row>
+
+</ion-card>
+
+</ion-content>
+
+<style>
+  .social-cards ion-col {
+    padding: 0;
+  }
+</style>

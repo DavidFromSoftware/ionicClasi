@@ -13,8 +13,8 @@
 <ion-content>
   <div [ngSwitch]="publicationOptions">
 
+    <!-- Selling section -->
     <div *ngSwitchCase="'selling'">
-
 
       <div *ngIf="email != ''">
         <ion-list>
@@ -80,19 +80,16 @@
           </ion-card>
       </div>
 
-
-
     </div>
 
     
-    
-
+    <!-- Publications section -->
     <div *ngSwitchCase="'publicaciones_ventas'">
-      <ion-searchbar ng-show="publicationOptions =='selling'" (ionInput)="getItems($event)"></ion-searchbar>
+      <ion-searchbar ng-show="publicationOptions =='selling'" [(ngModel)]="newSearch" (ionInput)="searchClassifieds()"></ion-searchbar>
       <ion-list>
         <ion-item *ngFor="let publication of this.publications[0]">
           <ion-thumbnail item-left>
-            <img src="{{ 'http://guiachivilcoy.com'+publication.data.images[0].photo }}">
+            <img src="{{ 'http://lvh.me:3000'+publication.data.images[0].photo }}">
           </ion-thumbnail>
           <h2> {{  publication.data.name }}</h2>
           <p></p>
@@ -100,5 +97,7 @@
         </ion-item>
       </ion-list>
     </div>
+
   </div>
+
 </ion-content>  

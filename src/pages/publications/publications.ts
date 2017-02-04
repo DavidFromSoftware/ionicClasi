@@ -25,7 +25,7 @@ export class PublicationDetails {
 export class PublicationsPage {	
 	publicationOptions: string = "publicaciones_ventas";
 	publications= [];
-
+	newSearch:string = ""
 	username: string = '';
 	email: string = '';
 	currentUser= this.sessionService.getUserInfo()
@@ -53,6 +53,15 @@ export class PublicationsPage {
 
 	openPublicationDetailPage(publication) {
 		this.navCtrl.push(PublicationDetails, { publication: publication})
+	}
+
+	searchClassifieds(){
+		this.publications = []
+		if(this.newSearch == ""){
+			this.publicationService.getPublications().subscribe( publications => { this.publications.push(publications)  })
+		}else{
+			this.publicationService.getSearchPublications(this.newSearch).subscribe( publications => { this.publications.push(publications)  })
+		}
 	}
 
 

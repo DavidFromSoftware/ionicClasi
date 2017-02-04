@@ -4,15 +4,25 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class PublicationService{
-	//access_token:string = "6e7764964e6cab6eaa8bf3a984e5b888"
-  //uri:string = "http://api.lvh.me:3000/v1/lugares/categoria/19?access_token="
-  //endpoint_url:string = uri+access_token;
+  search:string = ""
+  rootUrl:string = "http://api.lvh.me:3000/v1/"
+  access_token:string = "6e7764964e6cab6eaa8bf3a984e5b888"
+
+  getAllPublications:string = this.rootUrl+"lugares/categoria/19?access_token="+this.access_token;
+	getSearchPublicationsClas:string = this.rootUrl+"lugares/search/"+this.search+"?access_token="+this.access_token+"&categorie=clasificados"
+
 	constructor(private http: Http){
        this.http = http;
    }
 
    getPublications(){
-       return this.http.get(this.endpoint_url).map(response => response.json().responseData);
+   		return this.http.get(this.getAllPublications).map(response => response.json().responseData);
+   }
+
+   getSearchPublications(newSearch){
+   		this.search = newSearch;
+   		this.getSearchPublicationsClas = "http://api.chivilcoymovil.com/v1/lugares/search/"+this.search+"?access_token=bfcbee931a1c8ae5f6a3dcc68c78592b&categorie=clasificados"
+   		return this.http.get(this.getSearchPublicationsClas).map(response => response.json().responseData);
    }
 
 
