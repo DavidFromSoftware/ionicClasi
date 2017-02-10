@@ -21,7 +21,7 @@ export class PublicationService{
 
    getSearchPublications(newSearch){
    		this.search = newSearch;
-   		this.getSearchPublicationsClas = "http://api.chivilcoymovil.com/v1/lugares/search/"+this.search+"?access_token=bfcbee931a1c8ae5f6a3dcc68c78592b&categorie=clasificados"
+   		this.getSearchPublicationsClas = this.rootUrl+"lugares/search/"+this.search+"?access_token="+this.access_token+"&categorie=clasificados"
    		return this.http.get(this.getSearchPublicationsClas).map(response => response.json().responseData);
    }
 

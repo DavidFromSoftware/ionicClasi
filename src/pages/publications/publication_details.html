@@ -9,24 +9,26 @@
 <ion-card>
 
   <ion-item>
-    <ion-avatar item-left>
-      <img src="{{ 'http://lvh.me:3000'+publication.data.images[0].photo }}">
+    <ion-avatar *ngIf="publication.data.owner"  item-left>
+      <img src="{{ 'http://lvh.me:3000'+publication.data.owner.img_profile }}">
     </ion-avatar>
-    <h2>Marty McFly</h2>
-    <p>November 5, 1955</p>
+    <h2 *ngIf="publication.data.owner"> {{ publication.data.owner.fullname }} </h2>
+    <p>{{ publication.data.created_at }}</p>
+    <p>Teléfono: {{ publication.data.phone1 }}</p>
   </ion-item>
 
   <img src="{{ 'http://lvh.me:3000'+publication.data.images[0].photo }}">
 
   <ion-card-content>
+    <h2>{{ publication.data.name }}</h2>
     <p>{{ publication.data.descripcion }}</p>
   </ion-card-content>
 
   <ion-row>
     <ion-col>
       <button ion-button color="primary" clear small icon-left>
-        <ion-icon name='thumbs-up'></ion-icon>
-        {{ publication.data.rate }} Likes
+        <ion-icon name='star'></ion-icon>
+        {{ publication.data.rate }}
       </button>
     </ion-col>
     <ion-col>
@@ -37,10 +39,23 @@
     </ion-col>
     <ion-col center text-center>
       <ion-note>
-        11h ago
+        {{ publication.data.antiquity }}
       </ion-note>
     </ion-col>
   </ion-row>
+
+
+  <ion-list>
+    <ion-item *ngFor="let comment of publication.data.comments">
+      <ion-avatar item-left>
+        <img src="{{ 'http://lvh.me:3000'+comment.avatar }}">
+      </ion-avatar>
+      <h2>{{ comment.user_name }}</h2>
+      <p>{{ comment.message }}</p>
+      <ion-note item-right>{{ comment.created_at }}</ion-note>
+    </ion-item>
+  </ion-list>
+
 
 </ion-card>
 
