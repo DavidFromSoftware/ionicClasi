@@ -10,6 +10,7 @@ export class PublicationService{
 
   getAllPublications:string = this.rootUrl+"lugares/categoria/19?access_token="+this.access_token;
 	getSearchPublicationsClas:string = this.rootUrl+"lugares/search/"+this.search+"?access_token="+this.access_token+"&categorie=clasificados"
+  newPublication:string = this.rootUrl+"lugares?access_token="+this.access_token
 
 	constructor(private http: Http){
        this.http = http;
@@ -23,6 +24,10 @@ export class PublicationService{
    		this.search = newSearch;
    		this.getSearchPublicationsClas = this.rootUrl+"lugares/search/"+this.search+"?access_token="+this.access_token+"&categorie=clasificados"
    		return this.http.get(this.getSearchPublicationsClas).map(response => response.json().responseData);
+   }
+
+   PostPublication(newPublication){
+     console.log(newPublication);
    }
 
 

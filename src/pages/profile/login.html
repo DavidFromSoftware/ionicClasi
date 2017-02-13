@@ -1,11 +1,11 @@
 <ion-header>
 	<ion-navbar>
-		<ion-title *ngIf="currentUser.email == ''">Iniciar Sesión</ion-title>
-		<ion-title *ngIf="currentUser.email != ''"> Perfil</ion-title>
+		<ion-title *ngIf="currentUser == undefined">Iniciar Sesión</ion-title>
+		<ion-title *ngIf="currentUser != undefined"> Perfil</ion-title>
 	</ion-navbar>
 </ion-header>
 <ion-content padding >
-	<div *ngIf="currentUser.email == ''" >
+	<div *ngIf="currentUser == undefined" >
 		<ion-list>
 			 <ion-item>
 			   <ion-label floating>Correo</ion-label>
@@ -25,15 +25,15 @@
 			</button>
 		</div>
 	</div>
-	<div *ngIf="currentUser.email != ''" >
+	<div *ngIf="currentUser != undefined" >
 
 	  	<ion-list>
 		    <ion-item>
 		    	<ion-avatar item-left>
-		        	<img [src]="currentUser.avatar">
+		        	<img src="{{ 'http://guiachivilcoy.com'+currentUser.img_profile.url }}">
 		        </ion-avatar>
 		        <h2>{{currentUser.email}}</h2>
-		        <p>{{currentUser.name}}</p>
+		        <p>{{currentUser.fullname}}</p>
 		    </ion-item>
 
 	    	<ion-item>

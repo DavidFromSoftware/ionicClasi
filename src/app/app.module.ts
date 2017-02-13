@@ -3,7 +3,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { FavoritesPage } from '../pages/favorites/favorites';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { PublicationsPage, PublicationDetails } from '../pages/publications/publications';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -15,7 +14,6 @@ import { LoginPage } from '../pages/profile/login';
   declarations: [
     MyApp,
     FavoritesPage,
-    ContactPage,
     HomePage,
     PublicationsPage,
     PublicationDetails,
@@ -29,7 +27,6 @@ import { LoginPage } from '../pages/profile/login';
   entryComponents: [
     MyApp,
     FavoritesPage,
-    ContactPage,
     HomePage,
     PublicationsPage,
     PublicationDetails,

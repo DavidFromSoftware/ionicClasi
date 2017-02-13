@@ -21,7 +21,6 @@ export class SessionService{
   access_token:string = "6e7764964e6cab6eaa8bf3a984e5b888"
 
   endpoint_url:string = this.rootUrl+"sesion?access_token="+this.access_token;
-	currentUser: User;
 	constructor(private http: Http){
        this.http = http;
    }
@@ -32,11 +31,15 @@ export class SessionService{
    }
 
 	public getUserInfo(): User {
-    return this.currentUser;
+    if(typeof sessionStorage["currentUser"] != "undefined") {
+      return JSON.parse(sessionStorage["currentUser"]);
+    }else{
+      return undefined
+    }
   } 
 
   public setUserInfo(user) {
-   	this.currentUser = new User(user.email, user.fullname, "http://guiachivilcoy.com"+user.img_profile.url);
+    sessionStorage["currentUser"] = JSON.stringify(user)
   }
 
 

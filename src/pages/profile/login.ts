@@ -15,7 +15,7 @@ export class LoginPage {
 	password:string;
   	loading: Loading;
 
-	currentUser= new User("", "", "");
+	currentUser= this.sessionService.getUserInfo()
 
 	constructor(public navCtrl: NavController, 
 				private sessionService: SessionService, 
@@ -27,9 +27,7 @@ export class LoginPage {
 
 	ionViewWillEnter() {
 		if( typeof this.sessionService.getUserInfo() != "undefined" ) {
-			this.currentUser.email = this.sessionService.getUserInfo().name
-			this.currentUser.name = this.sessionService.getUserInfo().email
-			this.currentUser.avatar = this.sessionService.getUserInfo().avatar
+			this.currentUser= this.sessionService.getUserInfo()
 		}
 	}
 
