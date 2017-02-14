@@ -77,8 +77,10 @@ export class PublicationsPage {
 	createNewPublication(NewPublicationObject){
 		this.publicationService.PostPublication(NewPublicationObject).subscribe( response => {
 			if(response.status == 200){
-				console.log("Se añadio")
-				console.log(response)
+				this.publications = []
+				this.showLoading()
+				this.publicationService.getPublications().subscribe( publications => { this.publications.push(publications)  })
+				this.loading.dismiss()
 			}else{
 				console.log("error putos")
 				console.log(response)
