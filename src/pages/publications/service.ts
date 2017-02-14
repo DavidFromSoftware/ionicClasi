@@ -1,5 +1,6 @@
 import { Injectable }     from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
+import { SessionService } from '../profile/service';
 import 'rxjs/Rx';
 
 @Injectable()
@@ -10,9 +11,9 @@ export class PublicationService{
 
   getAllPublications:string = this.rootUrl+"lugares/categoria/19?access_token="+this.access_token;
 	getSearchPublicationsClas:string = this.rootUrl+"lugares/search/"+this.search+"?access_token="+this.access_token+"&categorie=clasificados"
-  newPublication:string = this.rootUrl+"lugares?access_token="+this.access_token
+  newPublicationUrl:string = this.rootUrl+"lugares?access_token="+this.access_token
 
-	constructor(private http: Http){
+	constructor(private http: Http, private sessionService: SessionService){
        this.http = http;
    }
 
@@ -27,7 +28,14 @@ export class PublicationService{
    }
 
    PostPublication(newPublication){
-     console.log(newPublication);
+     newPublication.owner = this.sessionService.getUserInfo().id
+     
+     let headers = new Headers({ 'Content-Type': 'application/json' });
+       var params={
+         place: newPublication
+       }
+       console.log(params)
+      return this.http.post(this.newPublicationUrl, params, headers).map(response => response.json());
    }
 
 

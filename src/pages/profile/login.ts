@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { SessionService, User } from './service';
+import { SessionService } from './service';
 
 import { NavController, ViewController, LoadingController, Loading } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
-import { PublicationsPage } from '../publications/publications'
 
 @Component({
   selector: 'login',

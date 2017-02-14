@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
 import { PublicationService } from './service';
-import { SessionService, User } from '../profile/service';
+import { SessionService } from '../profile/service';
 
 @Component({
 	templateUrl: 'publication_details.html'
@@ -28,9 +28,11 @@ export class PublicationsPage {
 	username: string = '';
 	email: string = '';
 	newProduct= {
-		name: "",
+		place_name: "",
 		price: "",
-		description: ""
+		place_descripcion: "",
+		categorie_id: 19,
+		approved: true
 	} ;
   	loading: Loading;
 
@@ -41,7 +43,6 @@ export class PublicationsPage {
 	ngOnInit(){
 		this.showLoading()
 		this.publicationService.getPublications().subscribe( publications => { this.publications.push(publications)  })
-		console.log(this.newProduct)
 		this.loading.dismiss()
 	}
 
@@ -74,7 +75,15 @@ export class PublicationsPage {
 	}
 
 	createNewPublication(NewPublicationObject){
-		this.publicationService.PostPublication(NewPublicationObject)
+		this.publicationService.PostPublication(NewPublicationObject).subscribe( response => {
+			if(response.status == 200){
+				console.log("Se añadio")
+				console.log(response)
+			}else{
+				console.log("error putos")
+				console.log(response)
+			}
+		})
 	}
 
 	showLoading() {

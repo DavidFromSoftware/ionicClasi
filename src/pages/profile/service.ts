@@ -30,7 +30,7 @@ export class SessionService{
       return this.http.post(this.endpoint_url, params, headers).map(response => response.json());
    }
 
-	public getUserInfo(): User {
+	public getUserInfo() {
     if(typeof sessionStorage["currentUser"] != "undefined") {
       return JSON.parse(sessionStorage["currentUser"]);
     }else{
