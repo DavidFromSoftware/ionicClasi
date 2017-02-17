@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
 import { PublicationService } from './service';
 import { SessionService } from '../profile/service';
+import { ToastController } from 'ionic-angular';
 
 @Component({
 	templateUrl: 'publication_details.html'
@@ -37,7 +38,7 @@ export class PublicationsPage {
   	loading: Loading;
 
 	currentUser= this.sessionService.getUserInfo()
-	constructor(public navCtrl: NavController, private publicationService: PublicationService, private sessionService: SessionService, private loadingCtrl: LoadingController ){
+	constructor(public navCtrl: NavController, public toastCtrl: ToastController, private publicationService: PublicationService, private sessionService: SessionService, private loadingCtrl: LoadingController ){
 
 	}
 	ngOnInit(){
@@ -81,6 +82,12 @@ export class PublicationsPage {
 				this.showLoading()
 				this.publicationService.getPublications().subscribe( publications => { this.publications.push(publications)  })
 				this.loading.dismiss()
+				let toast = this.toastCtrl.create({
+					message: "Creada una nueva publicación",
+					duration: 2000,
+					position: 'top'
+				});
+    			toast.present(toast);
 			}else{
 				console.log("error putos")
 				console.log(response)
