@@ -12,6 +12,9 @@ export class PublicationService{
   getAllPublications:string = this.rootUrl+"lugares/categoria/19?access_token="+this.access_token;
 	getSearchPublicationsClas:string = this.rootUrl+"lugares/search/"+this.search+"?access_token="+this.access_token+"&categorie=clasificados"
   newPublicationUrl:string = this.rootUrl+"lugares?access_token="+this.access_token
+  specificPublicationUrl(id){ 
+    return this.rootUrl+"lugares/"+id+"?access_token="+this.access_token
+   }
 
 	constructor(private http: Http, private sessionService: SessionService){
        this.http = http;
@@ -37,6 +40,12 @@ export class PublicationService{
        console.log(params)
       return this.http.post(this.newPublicationUrl, params, headers).map(response => response.json());
    }
+
+  DeletePublication(publicationId){
+    var publicationUrltoDelete= this.specificPublicationUrl(publicationId)
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.delete(publicationUrltoDelete, headers).map(response => response.json() );
+  }
 
 
 }

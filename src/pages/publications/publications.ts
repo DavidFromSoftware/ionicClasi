@@ -88,11 +88,20 @@ export class PublicationsPage {
 					position: 'top'
 				});
     			toast.present(toast);
+    			this.newProduct.place_name = ""
+    			this.newProduct.price = ""
+    			this.newProduct.place_descripcion = ""
 			}else{
 				console.log("error putos")
 				console.log(response)
 			}
 		})
+	}
+
+	removePublication(publicationId){
+		this.publicationService.DeletePublication(publicationId).subscribe( response => {
+			console.log(response)
+		});
 	}
 
 	showLoading() {
